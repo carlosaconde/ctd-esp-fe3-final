@@ -5,12 +5,21 @@ import Card from '../Components/Card'
 
 const Home = () => {
   return (
-    <main className="" >
-      <h1>Home</h1>
+    <>
+    
+    <h1>Home</h1>
       <div className='card-grid'>
+        <span>fsdfsdf</span>
+        <span>fsdfsdf</span>
+        <span>sdfsdf</span>
+        <span>sdfsdf</span>
+        <span>sdfsdf</span>
+
         {/* Aqui deberias renderizar las cards */}
       </div>
-    </main>
+    </>
+      
+    
   )
 }
 
