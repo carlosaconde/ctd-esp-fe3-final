@@ -1,7 +1,9 @@
-import React from "react";
 
+import docImg from '../images/doctor.jpg'
 
 const Card = ({ name, username, id }) => {
+
+
 
   const addFav = ()=>{
     // Aqui iria la logica para agregar la Card en el localStorage
@@ -9,6 +11,10 @@ const Card = ({ name, username, id }) => {
 
   return (
     <div className="card">
+      <img style={{width:'150px'}} src={docImg} alt="" />
+      <h3>{name}</h3>
+      <h4>{username}</h4>
+      <h5>{id}</h5>
         {/* En cada card deberan mostrar en name - username y el id */}
 
         {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}

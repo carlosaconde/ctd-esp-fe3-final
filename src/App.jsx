@@ -1,30 +1,30 @@
-import { useState } from "react";
 import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
-import themeContext, { theme as appTheme } from "./context/Context";
 import { Layout } from "./Components/Layout";
-import { Outlet, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Routes/Home";
 import Favs from "./Routes/Favs";
 import Contact from "./Routes/Contact";
+import {ContextProvider } from "./Components/utils/global.context";
 
 function App() {
-  const [theme, setTheme] = useState(appTheme.light);
-
-  const handleTheme = () => {
-    theme === appTheme.light
-      ? setTheme(appTheme.dark)
-      : setTheme(appTheme.light);
-  };
-
   return (
-    <themeContext.Provider value={{ theme, handleTheme }}>
+    <ContextProvider>
+    <BrowserRouter>
+      
       <Layout>
         <Navbar />
-        
+
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/favs" element={<Favs />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+        <Footer />
       </Layout>
-      
-    </themeContext.Provider>
+      {/* <Footer /> */}
+    </BrowserRouter>
+    </ContextProvider>
   );
 }
 

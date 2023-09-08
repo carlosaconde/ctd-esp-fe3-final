@@ -1,11 +1,17 @@
 import React, { useContext } from "react";
-import themeContext from "../context/Context";
+import { ContextGlobal } from "./utils/global.context";
+
+
 
 export const Layout = ({ children }) => {
-  const { theme } = useContext(themeContext);
+
+  const { providerValues} = useContext(ContextGlobal)
+const {theme} = providerValues.state
   return (
-    <div style={{ backgroundColor: theme.background, color: theme.font }}>
+    
+    <div className={theme} >
       {children}
     </div>
+   
   );
 };
