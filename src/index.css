@@ -5,7 +5,7 @@
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
+  
 }
 
 code {
@@ -15,9 +15,10 @@ code {
 .favButton{
   background-color: rgba(136, 136, 136, 0.116);
   padding: 10px;
-  border: none;
-  width: 100%;
+  border: solid;
+  width: 50%;
   cursor: pointer;
+  border-radius: 25px;
 }
 
 h1{

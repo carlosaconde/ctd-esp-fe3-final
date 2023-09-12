@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createContext, useEffect, useMemo, useReducer, useState } from "react";
 
-export const initialState = {theme: "light", data: []}
+export const initialState = { theme: "light", data: [] };
 
 const DentistContext = () => {
   const url = "https://jsonplaceholder.typicode.com/users";
@@ -15,22 +15,16 @@ const DentistContext = () => {
     };
     useEffect(() => {
       getFetch();
-
-      
     }, []);
   } catch (error) {
     console.log(error);
   }
   // console.log(resp);
-  
-  
+
   return resp;
 };
 
-
-
 console.log(initialState);
-
 
 export const reducer = (state, action) => {
   switch (action.type) {
@@ -44,38 +38,39 @@ export const reducer = (state, action) => {
 };
 export const ContextGlobal = createContext();
 
-
-
-
-
-
-
-
-
 export const ContextProvider = ({ children }) => {
-
-  
-
-
-
-
-  initialState.data=DentistContext()
-
-  
-  //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
  
+ const [list, setList] = useState(JSON.parse(localStorage.getItem("dentists"))||[])
 
-  const [state, dispatch] = useReducer(reducer, initialState)
+ const addToStorage =(id)=>{
+
+  let exists = list.some (dent=> dent.id === id)
+  if(!exists){
+    localStorage.setItem("dentists", JSON.stringify([...list,id]) )
+    setList([...list,id])
+  } 
+ }
+ 
+ 
+ 
+ 
+  initialState.data = DentistContext();
+
+  //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
+
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   console.log(state);
-  const providerValues = useMemo(()=>({
-    
-   state,dispatch}),[state])
+  const providerValues = useMemo(
+    () => ({
+      state,
+      dispatch,
+    }),
+    [state]
+  );
   return (
-
-    <ContextGlobal.Provider value={{providerValues}}>
+    <ContextGlobal.Provider value={{ addToStorage,providerValues }}>
       {children}
     </ContextGlobal.Provider>
   );
 };
-
