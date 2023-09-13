@@ -35,8 +35,9 @@ const Detail = () => {
     <>
       <h1>Detail Dentist id </h1>
       <div
-        style={{ display: "flex", justifyContent: "center", color: "black" }}
+        style={{height:'100vh',display: "flex", justifyContent: "center", color: "black" }}
       >
+        <div>
         {
           <Card
             name={dentistaByid.name}
@@ -46,6 +47,8 @@ const Detail = () => {
             website={dentistaByid.website}
           />
         }
+        </div>
+        
       </div>
 
       {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
