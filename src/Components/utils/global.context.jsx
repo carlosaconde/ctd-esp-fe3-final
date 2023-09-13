@@ -39,28 +39,12 @@ export const reducer = (state, action) => {
 export const ContextGlobal = createContext();
 
 export const ContextProvider = ({ children }) => {
- 
- const [list, setList] = useState(JSON.parse(localStorage.getItem("dentists"))||[])
-
- const addToStorage =(id)=>{
-
-  let exists = list.some (dent=> dent.id === id)
-  if(!exists){
-    localStorage.setItem("dentists", JSON.stringify([...list,id]) )
-    setList([...list,id])
-  } 
- }
- 
- 
- 
- 
   initialState.data = DentistContext();
 
   //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  console.log(state);
   const providerValues = useMemo(
     () => ({
       state,
@@ -69,7 +53,7 @@ export const ContextProvider = ({ children }) => {
     [state]
   );
   return (
-    <ContextGlobal.Provider value={{ addToStorage,providerValues }}>
+    <ContextGlobal.Provider value={{ providerValues }}>
       {children}
     </ContextGlobal.Provider>
   );

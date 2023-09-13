@@ -5,7 +5,7 @@ import Form from '../Components/Form'
 
 const Contact = () => {
   return (
-    <div style={{height:'100vh'}}>
+    <div style={{height:'100vh',display:'flex',flexDirection:'column',alignContent:'center'}}>
       <h2>Want to know more?</h2>
       <p>Send us your questions and we will contact you</p>
       <Form/>
