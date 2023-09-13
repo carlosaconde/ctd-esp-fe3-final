@@ -3,7 +3,7 @@ import docImg from "../images/doctor.jpg";
 
 import { Link } from "react-router-dom";
 
-const Card = ({ name, username, id, website, phone, email }) => {
+const Card = ({ onStorageChange,name, username, id, website, phone, email }) => {
   const exists = (id) => {
     const initialState = JSON.parse(localStorage.getItem("dentists")) || [];
     let isExist;
@@ -44,7 +44,9 @@ const Card = ({ name, username, id, website, phone, email }) => {
       const newIds = [...idsStoraged, id];
       localStorage.setItem("dentists", JSON.stringify(newIds));
       dispatch({ type: "add", payload: id });
+      onStorageChange()
     }
+    
   };
 
   const removeFav = (id) => {
@@ -54,6 +56,7 @@ const Card = ({ name, username, id, website, phone, email }) => {
 
     localStorage.setItem("dentists", JSON.stringify(newIds));
     dispatch({ type: "remove", payload: id });
+    onStorageChange()
   };
 
   return (

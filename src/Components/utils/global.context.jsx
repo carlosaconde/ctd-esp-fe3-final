@@ -38,9 +38,11 @@ export const reducer = (state, action) => {
 };
 export const ContextGlobal = createContext();
 
+
+
 export const ContextProvider = ({ children }) => {
   initialState.data = DentistContext();
-
+   
   //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
 
   const [state, dispatch] = useReducer(reducer, initialState);

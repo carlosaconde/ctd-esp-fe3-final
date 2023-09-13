@@ -16,10 +16,11 @@ function App() {
           <Navbar />
 
           <Routes>
+            <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/favs" element={<Favs />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/dentista/:id" element={<Detail/>}/>
+            <Route path="/dentista/:id" element={<Detail />} />
           </Routes>
           <Footer />
         </Layout>

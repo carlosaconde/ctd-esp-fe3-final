@@ -6,10 +6,11 @@ import { useState } from "react";
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Favs = () => {
+  
+  const [storageUpdated, setStorageUpdated] = useState(false)
   const [dentistsFromStorage, setDentistsFromStorage] = useState(
     JSON.parse(localStorage.getItem("dentists")) || []
   );
-
   const { providerValues } = useContext(ContextGlobal);
 
   const { data } = providerValues.state;
@@ -17,11 +18,17 @@ const Favs = () => {
   const filteredDentists = data.filter((dentist) =>
     dentistsFromStorage.find((dent) => dent === dentist.id)
   );
-
+  
   useEffect(() => {
-    const updatedDentists = JSON.parse(localStorage.getItem("dentists")) || [];
-    setDentistsFromStorage(updatedDentists);
-  }, [dentistsFromStorage]);
+    if(storageUpdated){
+      const updatedDentists = JSON.parse(localStorage.getItem("dentists")) || [];
+      setDentistsFromStorage(updatedDentists);
+      setStorageUpdated(false)
+      console.log(updatedDentists);
+      
+    }
+    
+  },[storageUpdated]);
 
   return (
     <>
@@ -35,6 +42,7 @@ const Favs = () => {
                 name={dentist.name}
                 username={dentist.username}
                 id={dentist.id}
+                onStorageChange={()=>setStorageUpdated(true)}
               />
             ))
           ) : (
