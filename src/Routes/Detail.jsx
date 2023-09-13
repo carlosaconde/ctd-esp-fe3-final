@@ -45,6 +45,7 @@ const Detail = () => {
             email={dentistaByid.email}
             phone={dentistaByid.phone}
             website={dentistaByid.website}
+            id={id}
           />
         }
         </div>
