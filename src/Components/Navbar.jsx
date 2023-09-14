@@ -10,7 +10,7 @@ const Navbar = () => {
   const { providerValues } = useContext(ContextGlobal);
   const { dispatch } = providerValues;
   const { theme } = providerValues.state;
-  console.log(providerValues);
+  
   return (
     <div className="dark" style={{ display: "flex" }}>
       <Link to="/home">

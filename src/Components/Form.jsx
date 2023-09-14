@@ -26,7 +26,7 @@ const Form = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    console.log(form);
+    
 
     setForm((prev) => ({
       ...prev,
@@ -37,7 +37,7 @@ const Form = () => {
 
     console.log(form);
   };
-
+  
   return (
     <div>
       <form onSubmit={onSubmit}>

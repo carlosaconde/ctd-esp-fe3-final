@@ -24,7 +24,7 @@ const DentistContext = () => {
   return resp;
 };
 
-console.log(initialState);
+
 
 export const reducer = (state, action) => {
   switch (action.type) {
